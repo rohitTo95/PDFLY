@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { FileText, Merge, Scissors, FileInput, FilePlus2, ScanLine, FileUp, Image } from 'lucide-react';
 import ToolCard from '@/components/ui-custom/ToolCard';
@@ -7,7 +6,6 @@ import Footer from '@/components/layout/Footer';
 import { cn } from '@/lib/utils';
 
 const Index = () => {
-  // Add intersection observer for animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -162,7 +160,7 @@ const Index = () => {
             
             <div className="flex flex-col items-center text-center animate-on-scroll opacity-0" style={{ animationDelay: '200ms' }}>
               <div className="w-16 h-16 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
-                <FileText2 className="h-8 w-8" />
+                <FileText className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Edit & Customize</h3>
               <p className="text-muted-foreground">
