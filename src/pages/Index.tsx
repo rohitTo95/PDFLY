@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import { FileText, Merge, Scissors, FileInput, FilePlus2, ScanLine, FileUp, Image, FileText2 } from 'lucide-react';
+import { FileText, Merge, Scissors, FileInput, FilePlus2, ScanLine, FileUp, Image } from 'lucide-react';
 import ToolCard from '@/components/ui-custom/ToolCard';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';

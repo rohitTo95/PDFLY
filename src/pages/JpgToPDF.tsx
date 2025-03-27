@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Image, Download, AlertTriangle, FileText } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -70,7 +70,7 @@ const JpgToPDF = () => {
   };
   
   // Clean up object URLs on component unmount
-  useState(() => {
+  useEffect(() => {
     return () => {
       imagePreview.forEach(url => URL.revokeObjectURL(url));
     };
