@@ -75,13 +75,13 @@ const Footer = () => {
             <h3 className="font-medium mb-4">Connect</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://github.com/rohitTo95" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Github size={16} />
                   <span>GitHub</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/in/rohit-dutta-b94691243/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Linkedin size={16} />
                   <span>LinkedIn</span>
                 </a>

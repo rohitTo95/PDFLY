@@ -42,10 +42,10 @@ const ThemeToggle = () => {
     >
       <span 
         className={cn(
-          "absolute top-1 bottom-1 w-6 h-6 rounded-full transform transition-transform duration-300 flex items-center justify-center",
+          "absolute top-1 w-6 h-6 rounded-full transform transition-transform duration-300 flex items-center justify-center",
           isDarkMode 
-            ? "translate-x-6 right-1 bg-dark-deepBlue text-white" 
-            : "translate-x-0 left-1 bg-white text-light-deepBlue"
+            ? "right-1 bg-dark-deepBlue text-white translate-x-0" 
+            : "left-1 bg-white text-light-deepBlue translate-x-0"
         )}
       >
         {isDarkMode ? (

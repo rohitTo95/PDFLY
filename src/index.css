@@ -34,6 +34,10 @@
     --ring: 240 5.9% 10%;
     
     --radius: 0.75rem;
+    
+    --scrollbar-track: 60 33% 92%;
+    --scrollbar-thumb: 207 77% 65%;
+    --scrollbar-thumb-hover: 207 77% 55%;
   }
   
   .dark {
@@ -64,6 +68,10 @@
     --border: 215 28% 25%;
     --input: 215 28% 25%;
     --ring: 240 4.9% 83.9%;
+    
+    --scrollbar-track: 215 28% 25%;
+    --scrollbar-thumb: 201 54% 44%;
+    --scrollbar-thumb-hover: 201 54% 54%;
   }
 }
 
@@ -82,21 +90,22 @@
     @apply scroll-smooth;
   }
   
-  /* Custom scrollbar styles */
+  /* Custom scrollbar styles with theme support */
   ::-webkit-scrollbar {
     width: 10px;
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-muted/50;
+    background-color: hsl(var(--scrollbar-track));
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/70 rounded-full;
+    background-color: hsl(var(--scrollbar-thumb));
+    border-radius: 10px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary;
+    background-color: hsl(var(--scrollbar-thumb-hover));
   }
 }
 
@@ -141,6 +150,17 @@
   .fade-mask {
     mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   }
+}
+
+/* Fix the animation below hero section */
+.smooth-appearance {
+  opacity: 0;
+  animation: smoothAppear 0.5s ease-out forwards;
+  animation-play-state: paused;
+}
+
+.smooth-appearance.visible {
+  animation-play-state: running;
 }
 
 /* PDF Tool specific styles */

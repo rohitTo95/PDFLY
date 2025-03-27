@@ -90,7 +90,7 @@ const Navbar = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm font-medium">PDF Tools</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-sm font-medium bg-transparent hover:bg-accent/50 hover:text-foreground">PDF Tools</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {pdfToolLinks.map((link) => (
@@ -113,7 +113,7 @@ const Navbar = () => {
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm font-medium">Convert Tools</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-sm font-medium bg-transparent hover:bg-accent/50 hover:text-foreground">Convert Tools</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-4 w-[200px]">
                       {convertToolLinks.map((link) => (
