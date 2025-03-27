@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { FileText, Github, Twitter, Mail, Heart } from 'lucide-react';
+import { FileText, Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -82,15 +82,15 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                  <Twitter size={16} />
-                  <span>Twitter</span>
+                  <Linkedin size={16} />
+                  <span>LinkedIn</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/contact" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Mail size={16} />
                   <span>Contact</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

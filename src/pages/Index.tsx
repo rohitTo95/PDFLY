@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { FileText, Merge, Scissors, FileInput, FilePlus2, ScanLine, FileUp, Image } from 'lucide-react';
 import ToolCard from '@/components/ui-custom/ToolCard';
@@ -7,17 +8,20 @@ import { cn } from '@/lib/utils';
 
 const Index = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    // Fixed animation to trigger even when elements are not visible on initial load
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          // Don't unobserve the element to allow re-animation when scrolling back
+        }
+      });
+    }, observerOptions);
     
     document.querySelectorAll('.animate-on-scroll').forEach((el) => {
       observer.observe(el);

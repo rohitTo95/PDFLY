@@ -10,6 +10,7 @@ import SplitPDF from "./pages/SplitPDF";
 import RemovePages from "./pages/RemovePages";
 import ExtractPages from "./pages/ExtractPages";
 import JpgToPDF from "./pages/JpgToPDF";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/remove-pages" element={<RemovePages />} />
           <Route path="/extract-pages" element={<ExtractPages />} />
           <Route path="/jpg-to-pdf" element={<JpgToPDF />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
