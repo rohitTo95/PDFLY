@@ -10,6 +10,8 @@ import SplitPDF from "./pages/SplitPDF";
 import RemovePages from "./pages/RemovePages";
 import ExtractPages from "./pages/ExtractPages";
 import JpgToPDF from "./pages/JpgToPDF";
+import CompressPDF from "./pages/CompressPDF";
+import ConvertPDF from "./pages/ConvertPDF";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/remove-pages" element={<RemovePages />} />
           <Route path="/extract-pages" element={<ExtractPages />} />
           <Route path="/jpg-to-pdf" element={<JpgToPDF />} />
+          <Route path="/compress-pdf" element={<CompressPDF />} />
+          <Route path="/convert-pdf" element={<ConvertPDF />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
