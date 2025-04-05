@@ -168,6 +168,30 @@ export const imagesToPDF = async (files: File[]): Promise<Blob> => {
   }
 };
 
+// Function to compress a PDF (this is a simulation since browser-based true PDF compression is limited)
+export const compressPDF = async (file: File, compressionLevel: 'low' | 'medium' | 'high'): Promise<Blob> => {
+  try {
+    const arrayBuffer = await fileToArrayBuffer(file);
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    
+    // In a real implementation, you would apply actual compression techniques here
+    // For example:
+    // 1. Image downsampling
+    // 2. Font subsetting
+    // 3. Remove unnecessary metadata
+    // 4. Compress stream objects
+    
+    // For this demo, we're just saving the PDF with default settings
+    // In a production app, you'd use a proper PDF compression library
+    
+    const pdfBytes = await pdfDoc.save();
+    return new Blob([pdfBytes], { type: 'application/pdf' });
+  } catch (error) {
+    console.error('Error compressing PDF:', error);
+    throw new Error('Failed to compress PDF file');
+  }
+};
+
 // Function to generate a download link for a blob
 export const downloadBlob = (blob: Blob, filename: string) => {
   const url = URL.createObjectURL(blob);
