@@ -3,9 +3,9 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import { ChevronLeft, ChevronRight, Trash2, File, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Set worker path for PDF.js with the correct version that matches react-pdf 9.2.1
-// This resolves the "Failed to fetch dynamically imported module" error
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+// Setup PDF.js worker - use a specific version that matches react-pdf version (9.2.1)
+// pdfjs.GlobalWorkerOptions.workerSrc requires the PDF.js version to match the react-pdf dependency
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 interface PDFPreviewProps {
   file: File | null;
@@ -125,13 +125,13 @@ const PDFPreview = ({
           onLoadError={onDocumentLoadError}
           loading={
             <div className="flex items-center justify-center w-full min-h-[300px]">
-              <div className="loading-spinner" />
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
             </div>
           }
         >
           {loading ? (
             <div className="flex items-center justify-center min-h-[300px]">
-              <div className="loading-spinner" />
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
             </div>
           ) : (
             <Page
