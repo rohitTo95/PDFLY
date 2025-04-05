@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { FileDown, File, Gauge, Upload } from 'lucide-react';
+import { FileDown, File, Gauge, Upload, Download } from 'lucide-react';
 import FileUploader from '@/components/ui-custom/FileUploader';
 import PDFPreview from '@/components/ui-custom/PDFPreview';
 import { downloadBlob } from '@/utils/pdfUtils';
