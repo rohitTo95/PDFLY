@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer';
 import { FileDown, File, Gauge, Upload, Download } from 'lucide-react';
 import FileUploader from '@/components/ui-custom/FileUploader';
 import PDFPreview from '@/components/ui-custom/PDFPreview';
-import { compressPDF, downloadBlob } from '@/utils/pdfUtils';
+import { compressPDF as cPDF, downloadBlob } from '@/utils/pdfUtils';
 import { useToast } from '@/hooks/use-toast';
 
 const CompressPDF = () => {
@@ -42,7 +42,7 @@ const CompressPDF = () => {
       setLoading(true);
       
       // Actually compress the PDF using our utility
-      const result = await compressPDF(file, compressionLevel);
+      const result = await cPDF(file, compressionLevel);
       const newSize = result.size;
       
       setCompressedPDF(result);
