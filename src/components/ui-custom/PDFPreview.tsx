@@ -3,9 +3,8 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import { ChevronLeft, ChevronRight, Trash2, File, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Setup PDF.js worker - use a specific version that matches react-pdf version (9.2.1)
-// pdfjs.GlobalWorkerOptions.workerSrc requires the PDF.js version to match the react-pdf dependency
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+// Setup PDF.js worker with a reliable CDN URL
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 interface PDFPreviewProps {
   file: File | null;

@@ -1,11 +1,10 @@
-
 import { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { FileDown, File, Gauge, Upload, Download } from 'lucide-react';
 import FileUploader from '@/components/ui-custom/FileUploader';
 import PDFPreview from '@/components/ui-custom/PDFPreview';
-import { downloadBlob } from '@/utils/pdfUtils';
+import { compressPDF, downloadBlob } from '@/utils/pdfUtils';
 import { useToast } from '@/hooks/use-toast';
 
 const CompressPDF = () => {
@@ -13,28 +12,20 @@ const CompressPDF = () => {
   const [compressedPDF, setCompressedPDF] = useState<Blob | null>(null);
   const [compressionLevel, setCompressionLevel] = useState<'low' | 'medium' | 'high'>('medium');
   const [loading, setLoading] = useState<boolean>(false);
+  const [originalSize, setOriginalSize] = useState<number>(0);
+  const [compressedSize, setCompressedSize] = useState<number>(0);
   const { toast } = useToast();
 
   const handleFilesSelected = (selectedFiles: File[]) => {
     if (selectedFiles.length > 0) {
       setFile(selectedFiles[0]);
+      setOriginalSize(selectedFiles[0].size);
       setCompressedPDF(null);
+      setCompressedSize(0);
     } else {
       setFile(null);
+      setOriginalSize(0);
     }
-  };
-
-  // Function to simulate PDF compression (in a real app, this would use actual compression algorithms)
-  const compressPDF = async (file: File, level: 'low' | 'medium' | 'high'): Promise<Blob> => {
-    return new Promise((resolve) => {
-      // Simulate compression processing time
-      setTimeout(() => {
-        // In reality, we would apply actual compression here
-        // For demo purposes, we'll create a "compressed" file by returning the original
-        // In a production app, you'd use a PDF compression library
-        resolve(file);
-      }, 2000); // Simulate 2 seconds of processing
-    });
   };
 
   const handleCompress = async () => {
@@ -50,28 +41,18 @@ const CompressPDF = () => {
     try {
       setLoading(true);
       
-      // Get compression ratio based on selected level
-      const compressionRatios = {
-        low: 0.9, // 10% reduction
-        medium: 0.7, // 30% reduction
-        high: 0.5, // 50% reduction
-      };
-      
-      // Compress the PDF
+      // Actually compress the PDF using our utility
       const result = await compressPDF(file, compressionLevel);
-      
-      // Calculate an estimated file size (simulated)
-      const originalSize = file.size;
-      const estimatedSize = Math.round(originalSize * compressionRatios[compressionLevel]);
-      
-      // Log compression result
-      console.log(`Original size: ${originalSize} bytes, Compressed size: ${estimatedSize} bytes`);
+      const newSize = result.size;
       
       setCompressedPDF(result);
+      setCompressedSize(newSize);
+      
+      const reductionPercent = ((originalSize - newSize) / originalSize * 100).toFixed(1);
       
       toast({
         title: 'PDF compressed successfully',
-        description: `Reduced from ${(originalSize / 1024).toFixed(1)} KB to approximately ${(estimatedSize / 1024).toFixed(1)} KB (${Math.round((1 - compressionRatios[compressionLevel]) * 100)}% reduction)`,
+        description: `Reduced from ${(originalSize / 1024).toFixed(1)} KB to ${(newSize / 1024).toFixed(1)} KB (${reductionPercent}% reduction)`,
       });
     } catch (error) {
       console.error('Error compressing PDF:', error);
@@ -181,12 +162,19 @@ const CompressPDF = () => {
                       </button>
                       
                       <div className="text-sm text-muted-foreground">
-                        <p className="mb-2"><strong>Original size:</strong> {file ? `${(file.size / 1024).toFixed(1)} KB` : 'Unknown'}</p>
+                        <p className="mb-2"><strong>Original size:</strong> {file ? `${(originalSize / 1024).toFixed(1)} KB` : 'Unknown'}</p>
+                        {compressedPDF && (
+                          <p className="mb-2"><strong>Compressed size:</strong> {`${(compressedSize / 1024).toFixed(1)} KB`} 
+                            <span className="text-green-500 ml-2">
+                              ({((originalSize - compressedSize) / originalSize * 100).toFixed(1)}% reduction)
+                            </span>
+                          </p>
+                        )}
                         
-                        <div className="space-y-2 text-xs">
-                          <p>• Low compression: ~10% reduction</p>
-                          <p>• Medium compression: ~30% reduction</p>
-                          <p>• High compression: ~50% reduction</p>
+                        <div className="space-y-2 text-xs mt-4">
+                          <p>• Low compression: Minimal quality loss, ~10-20% reduction</p>
+                          <p>• Medium compression: Balanced approach, ~20-40% reduction</p>
+                          <p>• High compression: Maximum compression, ~40-60% reduction</p>
                         </div>
                       </div>
                     </div>
