@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, FileText, ChevronDown } from 'lucide-react';
+import { Menu, X, FileText, ChevronDown, UserPlus, LogIn } from 'lucide-react';
 import ThemeToggle from '../ui-custom/ThemeToggle';
 import { cn } from '@/lib/utils';
 import {
@@ -12,6 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Button } from '../ui/button';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,9 @@ const Navbar = () => {
   
   const mainNavLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Merge PDF', path: '/merge-pdf' },
+    { name: 'Compress PDF', path: '/compress-pdf' },
+    { name: 'Convert PDF', path: '/convert-pdf' },
     { name: 'Contact', path: '/contact' },
   ];
   
@@ -71,73 +75,84 @@ const Navbar = () => {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {mainNavLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  "relative text-sm font-medium transition-colors hover:text-primary",
-                  location.pathname === link.path 
-                    ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary after:content-['']" 
-                    : "text-foreground"
-                )}
-              >
-                {link.name}
+          <nav className="hidden md:flex items-center space-x-4">
+            <div className="flex items-center space-x-4 mr-4">
+              {mainNavLinks.slice(0, 4).map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={cn(
+                    "relative text-sm font-medium transition-colors hover:text-primary",
+                    location.pathname === link.path 
+                      ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary after:content-['']" 
+                      : "text-foreground"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className={cn(
+                      "text-sm font-medium bg-transparent hover:bg-accent/50 hover:text-foreground",
+                      scrolled ? "text-foreground" : "text-foreground"
+                    )}>All PDF Tools</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        {pdfToolLinks.map((link) => (
+                          <li key={link.path}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                to={link.path}
+                                className={cn(
+                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
+                                  location.pathname === link.path ? "bg-accent text-accent-foreground" : ""
+                                )}
+                              >
+                                <div className="text-sm font-medium leading-none">{link.name}</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                        {convertToolLinks.map((link) => (
+                          <li key={link.path}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                to={link.path}
+                                className={cn(
+                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
+                                  location.pathname === link.path ? "bg-accent text-accent-foreground" : ""
+                                )}
+                              >
+                                <div className="text-sm font-medium leading-none">{link.name}</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+            
+            <div className="flex items-center space-x-3">
+              <ThemeToggle />
+              <Link to="/login">
+                <Button variant="outline" size="sm" className="flex items-center">
+                  <LogIn className="mr-1 h-4 w-4" />
+                  Login
+                </Button>
               </Link>
-            ))}
-            
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm font-medium bg-transparent hover:bg-accent/50 hover:text-foreground">PDF Tools</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {pdfToolLinks.map((link) => (
-                        <li key={link.path}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              to={link.path}
-                              className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
-                                location.pathname === link.path ? "bg-accent text-accent-foreground" : ""
-                              )}
-                            >
-                              <div className="text-sm font-medium leading-none">{link.name}</div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm font-medium bg-transparent hover:bg-accent/50 hover:text-foreground">Convert Tools</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-4 w-[200px]">
-                      {convertToolLinks.map((link) => (
-                        <li key={link.path}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              to={link.path}
-                              className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
-                                location.pathname === link.path ? "bg-accent text-accent-foreground" : ""
-                              )}
-                            >
-                              <div className="text-sm font-medium leading-none">{link.name}</div>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-            
-            <ThemeToggle />
+              <Link to="/signup">
+                <Button size="sm" className="flex items-center">
+                  <UserPlus className="mr-1 h-4 w-4" />
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
           </nav>
           
           {/* Mobile Navigation Toggle */}
@@ -174,9 +189,23 @@ const Navbar = () => {
             ))}
             
             <div className="block px-3 py-4 text-base font-medium border-b border-border/50">
-              <div className="font-medium mb-2">PDF Tools</div>
+              <div className="font-medium mb-2">All PDF Tools</div>
               <div className="pl-4 space-y-2">
                 {pdfToolLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={cn(
+                      "block py-2 text-sm",
+                      location.pathname === link.path 
+                        ? "text-primary" 
+                        : "text-foreground hover:text-primary"
+                    )}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                {convertToolLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
@@ -193,24 +222,19 @@ const Navbar = () => {
               </div>
             </div>
             
-            <div className="block px-3 py-4 text-base font-medium border-b border-border/50">
-              <div className="font-medium mb-2">Convert Tools</div>
-              <div className="pl-4 space-y-2">
-                {convertToolLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={cn(
-                      "block py-2 text-sm",
-                      location.pathname === link.path 
-                        ? "text-primary" 
-                        : "text-foreground hover:text-primary"
-                    )}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
+            <div className="flex flex-col space-y-2 mt-4 px-3">
+              <Link to="/login" className="w-full">
+                <Button variant="outline" className="w-full flex items-center justify-center">
+                  <LogIn className="mr-1 h-4 w-4" />
+                  Login
+                </Button>
+              </Link>
+              <Link to="/signup" className="w-full">
+                <Button className="w-full flex items-center justify-center">
+                  <UserPlus className="mr-1 h-4 w-4" />
+                  Sign Up
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

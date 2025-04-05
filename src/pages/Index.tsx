@@ -1,5 +1,4 @@
 
-import { useEffect } from 'react';
 import { FileText, Merge, Scissors, FileInput, FilePlus2, ScanLine, FileUp, Image } from 'lucide-react';
 import ToolCard from '@/components/ui-custom/ToolCard';
 import Navbar from '@/components/layout/Navbar';
@@ -7,33 +6,6 @@ import Footer from '@/components/layout/Footer';
 import { cn } from '@/lib/utils';
 
 const Index = () => {
-  useEffect(() => {
-    // Fixed animation to trigger even when elements are not visible on initial load
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -10% 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-          // Don't unobserve the element to allow re-animation when scrolling back
-        }
-      });
-    }, observerOptions);
-    
-    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-      observer.observe(el);
-    });
-    
-    return () => {
-      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-        observer.unobserve(el);
-      });
-    };
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -65,7 +37,7 @@ const Index = () => {
       {/* PDF Tools Section */}
       <section id="tools" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-on-scroll opacity-0">
+          <div className="text-center mb-12">
             <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-medium">
               PDF Tools
             </div>
@@ -78,7 +50,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="animate-on-scroll opacity-0" style={{ animationDelay: '0ms' }}>
+            <div>
               <ToolCard
                 title="Merge PDF"
                 description="Combine multiple PDF files into a single document."
@@ -87,7 +59,7 @@ const Index = () => {
               />
             </div>
             
-            <div className="animate-on-scroll opacity-0" style={{ animationDelay: '100ms' }}>
+            <div>
               <ToolCard
                 title="Split PDF"
                 description="Separate a PDF into multiple individual documents."
@@ -96,7 +68,7 @@ const Index = () => {
               />
             </div>
             
-            <div className="animate-on-scroll opacity-0" style={{ animationDelay: '200ms' }}>
+            <div>
               <ToolCard
                 title="Remove Pages"
                 description="Delete specific pages from your PDF document."
@@ -105,7 +77,7 @@ const Index = () => {
               />
             </div>
             
-            <div className="animate-on-scroll opacity-0" style={{ animationDelay: '300ms' }}>
+            <div>
               <ToolCard
                 title="Extract Pages"
                 description="Select and save specific pages as a new PDF."
@@ -114,7 +86,7 @@ const Index = () => {
               />
             </div>
             
-            <div className="animate-on-scroll opacity-0" style={{ animationDelay: '400ms' }}>
+            <div>
               <ToolCard
                 title="JPG to PDF"
                 description="Convert your images into a professional PDF document."
@@ -123,7 +95,7 @@ const Index = () => {
               />
             </div>
             
-            <div className="animate-on-scroll opacity-0" style={{ animationDelay: '500ms' }}>
+            <div>
               <ToolCard
                 title="More Coming Soon"
                 description="We're constantly adding new tools to better serve your needs."
@@ -139,7 +111,7 @@ const Index = () => {
       {/* How It Works Section */}
       <section id="how-it-works" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-on-scroll opacity-0">
+          <div className="text-center mb-12">
             <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
               Simple Process
             </div>
@@ -152,7 +124,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            <div className="flex flex-col items-center text-center animate-on-scroll opacity-0" style={{ animationDelay: '0ms' }}>
+            <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
                 <FileUp className="h-8 w-8" />
               </div>
@@ -162,7 +134,7 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="flex flex-col items-center text-center animate-on-scroll opacity-0" style={{ animationDelay: '200ms' }}>
+            <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
                 <FileText className="h-8 w-8" />
               </div>
@@ -172,7 +144,7 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="flex flex-col items-center text-center animate-on-scroll opacity-0" style={{ animationDelay: '400ms' }}>
+            <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
                 <ScanLine className="h-8 w-8" />
               </div>
@@ -187,7 +159,7 @@ const Index = () => {
       
       {/* CTA Section */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/20 to-secondary/20">
-        <div className="max-w-7xl mx-auto text-center animate-on-scroll opacity-0">
+        <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Transform Your Documents?
           </h2>
