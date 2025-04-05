@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Trash2, File, AlertCircle } from 'lucide-rea
 import { cn } from '@/lib/utils';
 
 // Setup PDF.js worker with a reliable CDN URL
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.0.279/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 interface PDFPreviewProps {
   file: File | null;
