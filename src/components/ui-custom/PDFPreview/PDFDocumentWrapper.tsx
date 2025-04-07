@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 // Set the worker URL to the EXACT same version as the API
 // Using version 2.6.347 for both API and worker to ensure compatibility
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
 
 interface PDFDocumentWrapperProps {
   fileUrl: string;
