@@ -3,8 +3,9 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import { ChevronLeft, ChevronRight, Trash2, File, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Set the PDF.js worker with a specific version to ensure API compatibility
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
+// Set the PDF.js worker with the correct version to ensure API compatibility
+// Using the exact same version as the worker to avoid API mismatch
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
 
 interface PDFPreviewProps {
   file: File | null;
@@ -31,7 +32,6 @@ const PDFPreview = ({
   const [error, setError] = useState<string | null>(null);
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   
-  // Create and manage file URL
   useEffect(() => {
     if (file) {
       setLoading(true);
@@ -47,39 +47,33 @@ const PDFPreview = ({
     }
   }, [file]);
   
-  // Handle document load success
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
     setPageNumber(1);
     setLoading(false);
   };
   
-  // Handle document load error
   const onDocumentLoadError = (error: Error) => {
     setError('Failed to load PDF: ' + error.message);
     setLoading(false);
   };
   
-  // Navigate to previous page
   const prevPage = () => {
     setPageNumber(prev => Math.max(prev - 1, 1));
   };
   
-  // Navigate to next page
   const nextPage = () => {
     if (numPages) {
       setPageNumber(prev => Math.min(prev + 1, numPages));
     }
   };
   
-  // Handle page click for selection
   const handlePageClick = () => {
     if (onPageSelect && pageNumber) {
       onPageSelect(pageNumber);
     }
   };
   
-  // Check if current page is selected
   const isPageSelected = selectedPages?.includes(pageNumber);
   
   if (!fileUrl) {
@@ -109,7 +103,6 @@ const PDFPreview = ({
   
   return (
     <div className={cn("flex flex-col items-center", className)}>
-      {/* PDF Document */}
       <div 
         className={cn(
           "relative border rounded-xl overflow-hidden",
@@ -143,7 +136,6 @@ const PDFPreview = ({
           )}
         </Document>
         
-        {/* Page selection indicator */}
         {onPageSelect && isPageSelected && (
           <div className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white text-xs font-bold">
             {selectedPages.indexOf(pageNumber) + 1}
@@ -151,7 +143,6 @@ const PDFPreview = ({
         )}
       </div>
       
-      {/* Controls */}
       {showControls && numPages && numPages > 0 && (
         <div className="flex items-center justify-between mt-4 w-full">
           <div className="flex items-center space-x-1">
