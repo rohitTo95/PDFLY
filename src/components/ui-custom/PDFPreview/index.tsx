@@ -8,7 +8,7 @@ import { ErrorState } from './ErrorState';
 import { cn } from '@/lib/utils';
 
 // Ensure worker is set globally
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
 
 interface PDFPreviewProps {
   file: File | null;
