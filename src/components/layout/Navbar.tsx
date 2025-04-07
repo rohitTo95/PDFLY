@@ -94,12 +94,12 @@ const Navbar = () => {
               
               <NavigationMenu>
                 <NavigationMenuList>
-                  <NavigationMenuItem>
+                  <NavigationMenuItem className="relative">
                     <NavigationMenuTrigger className={cn(
                       "text-sm font-medium bg-transparent hover:bg-accent/50 hover:text-foreground",
                       scrolled ? "text-foreground" : "text-foreground"
                     )}>All PDF Tools</NavigationMenuTrigger>
-                    <NavigationMenuContent>
+                    <NavigationMenuContent className="absolute right-0">
                       <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {pdfToolLinks.map((link) => (
                           <li key={link.path}>

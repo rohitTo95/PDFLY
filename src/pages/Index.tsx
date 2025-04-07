@@ -49,61 +49,49 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div>
-              <ToolCard
-                title="Merge PDF"
-                description="Combine multiple PDF files into a single document."
-                icon={Merge}
-                path="/merge-pdf"
-              />
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            <ToolCard
+              title="Merge PDF"
+              description="Combine multiple PDF files into a single document."
+              icon={Merge}
+              path="/merge-pdf"
+            />
             
-            <div>
-              <ToolCard
-                title="Split PDF"
-                description="Separate a PDF into multiple individual documents."
-                icon={Scissors}
-                path="/split-pdf"
-              />
-            </div>
+            <ToolCard
+              title="Split PDF"
+              description="Separate a PDF into multiple individual documents."
+              icon={Scissors}
+              path="/split-pdf"
+            />
             
-            <div>
-              <ToolCard
-                title="Remove Pages"
-                description="Delete specific pages from your PDF document."
-                icon={FileInput}
-                path="/remove-pages"
-              />
-            </div>
+            <ToolCard
+              title="Remove Pages"
+              description="Delete specific pages from your PDF document."
+              icon={FileInput}
+              path="/remove-pages"
+            />
             
-            <div>
-              <ToolCard
-                title="Extract Pages"
-                description="Select and save specific pages as a new PDF."
-                icon={FilePlus2}
-                path="/extract-pages"
-              />
-            </div>
+            <ToolCard
+              title="Extract Pages"
+              description="Select and save specific pages as a new PDF."
+              icon={FilePlus2}
+              path="/extract-pages"
+            />
             
-            <div>
-              <ToolCard
-                title="JPG to PDF"
-                description="Convert your images into a professional PDF document."
-                icon={Image}
-                path="/jpg-to-pdf"
-              />
-            </div>
+            <ToolCard
+              title="JPG to PDF"
+              description="Convert your images into a professional PDF document."
+              icon={Image}
+              path="/jpg-to-pdf"
+            />
             
-            <div>
-              <ToolCard
-                title="More Coming Soon"
-                description="We're constantly adding new tools to better serve your needs."
-                icon={FileText}
-                path="/"
-                className="border-dashed bg-muted/30 hover:bg-muted/50 hover:border-muted"
-              />
-            </div>
+            <ToolCard
+              title="More Coming Soon"
+              description="We're constantly adding new tools to better serve your needs."
+              icon={FileText}
+              path="/"
+              className="border-dashed bg-muted/30 hover:bg-muted/50 hover:border-muted"
+            />
           </div>
         </div>
       </section>
@@ -123,7 +111,7 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-5xl mx-auto">
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
                 <FileUp className="h-8 w-8" />
@@ -159,7 +147,7 @@ const Index = () => {
       
       {/* CTA Section */}
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/20 to-secondary/20">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Transform Your Documents?
           </h2>
