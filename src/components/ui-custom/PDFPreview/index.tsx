@@ -1,10 +1,14 @@
 
 import { useState, useEffect } from 'react';
+import { pdfjs } from 'react-pdf';
 import { PDFDocumentWrapper } from './PDFDocumentWrapper';
 import { PDFControls } from './PDFControls';
 import { EmptyState } from './EmptyState';
 import { ErrorState } from './ErrorState';
 import { cn } from '@/lib/utils';
+
+// Ensure worker is set globally
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
 
 interface PDFPreviewProps {
   file: File | null;

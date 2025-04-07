@@ -1,10 +1,9 @@
 
 import { Document, Page, pdfjs } from 'react-pdf';
-import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
-// Set the PDF.js worker with the correct version to ensure API compatibility
-// Using the exact same version as the worker to avoid API mismatch
+// Set the worker URL to the EXACT same version as the API
+// Using version 2.6.347 for both API and worker to ensure compatibility
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js`;
 
 interface PDFDocumentWrapperProps {
