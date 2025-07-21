@@ -20,7 +20,7 @@ const jwtSecret = await crypto.subtle.importKey(
 serve(async (req: Request): Promise<Response> => {
   const headers = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": ["localhost:3000", "https://pdfly-alpha.vercel.app"],
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
   };

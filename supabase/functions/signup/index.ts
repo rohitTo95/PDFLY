@@ -14,7 +14,7 @@ serve(async (req: Request): Promise<Response> => {
     return new Response(null, {
       status: 204,
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': ["localhost:3000", "https://pdfly-alpha.vercel.app"],
         'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Access-Control-Max-Age': '86400',
