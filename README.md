@@ -52,9 +52,14 @@
 
 ---
 
+
 ## 🖼️ Demo
 
-> **📸 Screenshots will be added here**
+<img width="2558" height="1268" alt="Screenshot From 2025-07-22 01-39-42" src="https://github.com/user-attachments/assets/da0b2fa6-1bfa-45ef-80e0-cef32a71b14f" />
+
+<img width="2558" height="1268" alt="Screenshot From 2025-07-22 01-39-54" src="https://github.com/user-attachments/assets/4f039f8e-b50f-4f9c-9db3-9f198cdc2d86" />
+
+<img width="2558" height="1268" alt="Screenshot From 2025-07-22 01-40-03" src="https://github.com/user-attachments/assets/1fbb7955-5399-4139-b983-8d30f41d810c" />
 
 ---
 
@@ -206,7 +211,7 @@ We welcome contributions! Here's how you can help:
 
 ## 📝 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Custom License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
