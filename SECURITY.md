@@ -16,7 +16,7 @@ We take security seriously. If you discover a security vulnerability in PDFY, pl
 ### How to Report
 
 1. **DO NOT** create a public GitHub issue for security vulnerabilities
-2. **Email** us at: security@pdfy.com (or your designated security email)
+2. **Email** us at: xman76066@gmail.com
 3. **Include** the following information:
    - Description of the vulnerability
    - Steps to reproduce
@@ -102,7 +102,7 @@ We use the following tools to maintain security:
 For non-security related issues:
 - **Bugs**: Create a GitHub issue
 - **Features**: Use GitHub discussions
-- **Support**: Contact support@pdfy.com
+- **Support**: Contact xman76066@gmail.com
 
 ---
 
