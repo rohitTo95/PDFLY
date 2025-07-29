@@ -55,7 +55,7 @@ const Signup = () => {
     const success = await register(values.name, values.email, values.password);
     
     if (success) {
-      navigate('/login');
+      navigate('/email-verification');
     }
     
     setIsLoading(false);

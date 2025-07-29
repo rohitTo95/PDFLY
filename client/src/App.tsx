@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +17,7 @@ import ConvertPDF from "./pages/ConvertPDF";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import EmailVerification from "./pages/EmailVerification";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -78,6 +78,7 @@ const App = () => (
             
             {/* Public Routes */}
             <Route path="/contact" element={<Contact />} />
+            <Route path="/email-verification" element={<EmailVerification />} />
             
             {/* Auth Routes - redirect if already authenticated */}
             <Route path="/login" element={
@@ -88,6 +89,11 @@ const App = () => (
             <Route path="/signup" element={
               <PublicRoute>
                 <Signup />
+              </PublicRoute>
+            } />
+            <Route path="/email-verification" element={
+              <PublicRoute>
+                <EmailVerification />
               </PublicRoute>
             } />
             

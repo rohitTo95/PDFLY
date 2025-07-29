@@ -105,10 +105,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
 
       if (response.status === 200) {
-        toast({
-          title: 'Registration Successful',
-          description: 'Your account has been created successfully. Please log in.',
-        });
+        // Success - will redirect to email verification page
         return true;
       }
       return false;
