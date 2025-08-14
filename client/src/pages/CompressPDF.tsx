@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { FileDown, File, Gauge, Upload, Download } from 'lucide-react';
 import FileUploader from '@/components/ui-custom/FileUploader';
+import OptionalAuthBanner from '@/components/ui-custom/OptionalAuthBanner';
 import PDFPreview from '@/components/ui-custom/PDFPreview';
 import { compressPDF as cPDF, downloadBlob } from '@/utils/pdfUtils';
 import { useToast } from '@/hooks/use-toast';
@@ -85,6 +86,9 @@ const CompressPDF = () => {
       
       <main className="flex-1 pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Optional Authentication Banner */}
+          <OptionalAuthBanner />
+          
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">Compress PDF</h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

@@ -56,3 +56,35 @@ export const PublicRoute: React.FC<PublicRouteProps> = ({
 
   return <>{children}</>;
 };
+
+interface OptionalAuthWrapperProps {
+  children: React.ReactNode;
+}
+
+/**
+ * OptionalAuthWrapper - Checks for authentication tokens but doesn't block access
+ * This component will:
+ * - Check if user has a stored token and validate it
+ * - Update auth state if valid token is found
+ * - Allow access regardless of authentication status
+ */
+export const OptionalAuthWrapper: React.FC<OptionalAuthWrapperProps> = ({ children }) => {
+  const { checkAuth, isLoading } = useAuth();
+
+  // Check auth on mount, but don't block rendering
+  React.useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  // Show loading only briefly to check for existing tokens
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  // Always render children, regardless of auth status
+  return <>{children}</>;
+};

@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { ProtectedRoute, PublicRoute } from "@/components/auth/AuthMiddleware";
+import { ProtectedRoute, PublicRoute, OptionalAuthWrapper } from "@/components/auth/AuthMiddleware";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import MergePDF from "./pages/MergePDF";
@@ -30,7 +30,11 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={
+              <OptionalAuthWrapper>
+                <Index />
+              </OptionalAuthWrapper>
+            } />
             
             {/* Dashboard - protected route */}
             <Route path="/dashboard" element={
@@ -39,41 +43,41 @@ const App = () => (
               </ProtectedRoute>
             } />
             
-            {/* Protected Routes - require authentication */}
+            {/* PDF Tools - Open access, optional authentication */}
             <Route path="/merge-pdf" element={
-              <ProtectedRoute>
+              <OptionalAuthWrapper>
                 <MergePDF />
-              </ProtectedRoute>
+              </OptionalAuthWrapper>
             } />
             <Route path="/split-pdf" element={
-              <ProtectedRoute>
+              <OptionalAuthWrapper>
                 <SplitPDF />
-              </ProtectedRoute>
+              </OptionalAuthWrapper>
             } />
             <Route path="/remove-pages" element={
-              <ProtectedRoute>
+              <OptionalAuthWrapper>
                 <RemovePages />
-              </ProtectedRoute>
+              </OptionalAuthWrapper>
             } />
             <Route path="/extract-pages" element={
-              <ProtectedRoute>
+              <OptionalAuthWrapper>
                 <ExtractPages />
-              </ProtectedRoute>
+              </OptionalAuthWrapper>
             } />
             <Route path="/jpg-to-pdf" element={
-              <ProtectedRoute>
+              <OptionalAuthWrapper>
                 <JpgToPDF />
-              </ProtectedRoute>
+              </OptionalAuthWrapper>
             } />
             <Route path="/compress-pdf" element={
-              <ProtectedRoute>
+              <OptionalAuthWrapper>
                 <CompressPDF />
-              </ProtectedRoute>
+              </OptionalAuthWrapper>
             } />
             <Route path="/convert-pdf" element={
-              <ProtectedRoute>
+              <OptionalAuthWrapper>
                 <ConvertPDF />
-              </ProtectedRoute>
+              </OptionalAuthWrapper>
             } />
             
             {/* Public Routes */}

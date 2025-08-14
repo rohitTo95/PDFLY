@@ -4,6 +4,7 @@ import { Scissors, Download, FileText, AlertTriangle, ChevronDown, File } from '
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import FileUploader from '@/components/ui-custom/FileUploader';
+import OptionalAuthBanner from '@/components/ui-custom/OptionalAuthBanner';
 import { splitPDF, downloadBlob } from '@/utils/pdfUtils';
 import { useToast } from '@/hooks/use-toast';
 import PDFPreview from '@/components/ui-custom/PDFPreview';
@@ -91,6 +92,9 @@ const SplitPDF = () => {
       
       <main className="flex-grow pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
+          {/* Optional Authentication Banner */}
+          <OptionalAuthBanner />
+          
           {/* Header */}
           <div className="text-center mb-10">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
